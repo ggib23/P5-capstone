@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="english">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Planner</title>
+    <base href="/">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap">
+    <link rel="stylesheet" href="styles/base.scss">
+</head>
+
+<body>
+    <div id="app">
+        <div class="holder">
+            <div class="headline">
+                Travel Planner </br>
+            </div>
+            <div class="subtitle">
+                Excited to Plan Your Trip? Let's get started!
+            </div>
+        </div>
+        <div class="holder">
+            <label class="subtitle">Where are you traveling?</label>
+            <textarea id="location" placeholder="enter destination here (city name, state abbreviation)"></textarea>
+        </div>
+        <div class="holder travelDate">
+            <label class="subtitle" id="subtitle3">When are you looking to travel? (YYYY-MM-DD)</label>
+            <button id="generate" type="submit" onclick="return Client.retrieveData(event)"
+                onsubmit="return Client.retrieveData(event)"> Submit </button>
+            <textarea id="day" placeholder="enter your travel date here (YYYY-MM-DD)"></textarea>
+        </div>
+        <div class="holder entry">
+            <div class="title" id="dest"></div>
+            <div id="entryHolder">
+                <div class="weather" id="date"></div>
+                <div class="weather" id="temp"></div>
+                <div class="weather" id="precip"></div>
+                <div class="weather" id="skies"></div>
+                <div class="weather" id="mediaImage"></div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js" type="text/javascript"></script>
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
+</body>
+
+</html>
